@@ -67,9 +67,9 @@
                 result.textContent = 'Поздравляю! Вы угадали число!';
                 guessButton.disabled = true;
             } else if (userGuess < randomNumber) {
-                result.textContent = 'Мимо';
+                result.textContent = 'Попробуй число больше';
             } else if (userGuess > randomNumber) {
-                result.textContent = 'Неа';
+                result.textContent = 'Попробуй число меньше';
             }
 
             guessInput.value = '';
