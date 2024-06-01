@@ -47,7 +47,7 @@
 <body>
     <div class="container">
         <h1>Игра "Угадай число"</h1>
-        <input type="number" id="guessInput" min="1" max="100" placeholder="Введите число от 1 до 100">
+        <input type="number" id="guessInput" min="1" max="10" placeholder="Введите число от 1 до 100">
         <button id="guessButton">Угадать</button>
         <p id="result"></p>
     </div>
@@ -57,7 +57,7 @@
         const guessButton = document.getElementById('guessButton');
         const result = document.getElementById('result');
 
-        let randomNumber = 34
+        let randomNumber = 7
         guessButton.addEventListener('click', () => {
             let userGuess = parseInt(guessInput.value);
 
