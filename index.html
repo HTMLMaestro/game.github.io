@@ -62,7 +62,7 @@
             let userGuess = parseInt(guessInput.value);
 
             if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
-                result.textContent = 'Пожалуйста, введите число от 1 до 100.';
+                result.textContent = 'Пожалуйста, введите число от 1 до 10.';
             } else if (userGuess === randomNumber) {
                 result.textContent = 'Поздравляю! Вы угадали число!';
                 guessButton.disabled = true;
