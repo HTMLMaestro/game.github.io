@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+ <link rel="icon" type="img/ocon.jpg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Игра "Угадай число"</title>
@@ -83,6 +84,10 @@
                 resultImage.src = 'img/sigma.gif';
                 resultImage.style.display = 'block';
                 guessButton.disabled = true;
+                setTimeout(() => {
+                location.reload();
+}, 3000);
+               
             } else if (userGuess < randomNumber) {
                 result.textContent = 'Попробуй число больше';
             } else if (userGuess > randomNumber) {
@@ -97,6 +102,9 @@
                 resultImage.src = 'img/лох.gif';
                 resultImage.style.display = 'block';
                 guessButton.disabled = true;
+                setTimeout(() => {
+                location.reload();
+}, 3000);
             }
 
             guessInput.value = '';
