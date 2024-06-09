@@ -1,58 +1,66 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
- <link rel="icon" type="img/ocon.jpg">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Игра "Угадай число"</title>
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #2F2F2F;
-        color: white;
-    }
-    .container {
-        text-align: center;
-        font-family: Times;
-    }
-    h3 {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    h1 {
-        font-size: 30px;
-        margin-bottom: 20px;
-        font-family: Times;
-        color: white;
-    }
-    input[type="number"] {
-        padding: 10px;
-        font-size: 12px;
-        width: 200px;
-        font-family: Times;
-    }
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #212121;
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-family: Times;
-    }
-    p {
-        font-size: 20px;
-        margin-top: 20px;
-    }
-    #resultImage {
-        width: 350px;
-        height: 350px;
-    }
-</style>
+    <link rel="icon" href="img/ocon.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра "Угадай число"</title>
+    <style>
+        body {
+    background-image: url('img/фон.jpg');
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+img {
+    opacity: 1000; 
+}
+
+        .container {
+            text-align: center;
+            font-family: Times;
+        }
+        h3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            font-family: Times;
+            color: white;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 12px;
+            width: 200px;
+            font-family: Times;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #212121;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-family: Times;
+        }
+        p {
+  font-family: Times;
+  color: white;
+  text-shadow: black;
+  font-size: 20px;
+}
+        #resultImage {
+            width: 350px;
+            height: 350px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -72,7 +80,7 @@
         const remainingAttempts = document.getElementById('remainingAttempts');
         
         let attempts = 3;
-        let randomNumber = 3;
+        let randomNumber = Math.floor(Math.random() * 10) + 1;
 
         guessButton.addEventListener('click', () => {
             let userGuess = parseInt(guessInput.value);
@@ -85,9 +93,8 @@
                 resultImage.style.display = 'block';
                 guessButton.disabled = true;
                 setTimeout(() => {
-                location.reload();
-}, 3000);
-               
+                    location.reload();
+                }, 3000);
             } else if (userGuess < randomNumber) {
                 result.textContent = 'Попробуй число больше';
             } else if (userGuess > randomNumber) {
@@ -103,8 +110,8 @@
                 resultImage.style.display = 'block';
                 guessButton.disabled = true;
                 setTimeout(() => {
-                location.reload();
-}, 3000);
+                    location.reload();
+                }, 3000);
             }
 
             guessInput.value = '';
