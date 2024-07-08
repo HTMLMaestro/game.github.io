@@ -83,40 +83,43 @@ img {
         let randomNumber = Math.floor(Math.random() * 10) + 1;
 
         guessButton.addEventListener('click', () => {
-            let userGuess = parseInt(guessInput.value);
+    let userGuess = parseInt(guessInput.value);
 
-            if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
-                result.textContent = 'Пожалуйста, введите число от 1 до 10.';
-            } else if (userGuess === randomNumber) {
-                result.textContent = 'Поздравляю! Вы угадали число!';
-                resultImage.src = 'img/sigma.gif';
-                resultImage.style.display = 'block';
-                guessButton.disabled = true;
-                setTimeout(() => {
-                    location.reload();
-                }, 3000);
-            } else if (userGuess < randomNumber) {
-                result.textContent = 'Попробуй число больше';
-            } else if (userGuess > randomNumber) {
-                result.textContent = 'Попробуй число меньше';
-            }
+    if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
+        result.textContent = 'Пожалуйста, введите число от 1 до 10.';
+    } else {
+        attempts--;
 
-            attempts--;
-            remainingAttempts.textContent = attempts;
+        if (userGuess === randomNumber) {
+            result.textContent = 'Поздравляю! Вы угадали число!';
+            resultImage.src = 'img/sigma.gif';
+            resultImage.style.display = 'block';
+            guessButton.disabled = true;
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+        } else if (userGuess < randomNumber) {
+            result.textContent = 'Попробуй число больше';
+        } else if (userGuess > randomNumber) {
+            result.textContent = 'Попробуй число меньше';
+        }
 
-            if (attempts === 0) {
-                result.textContent = 'Вы проиграли!';
-                resultImage.src = 'img/лох.gif';
-                resultImage.style.display = 'block';
-                guessButton.disabled = true;
-                setTimeout(() => {
-                    location.reload();
-                }, 3000);
-            }
+        remainingAttempts.textContent = attempts;
 
-            guessInput.value = '';
-            guessInput.focus();
-        });
+        if (attempts === 0) {
+            result.textContent = 'Вы проиграли!';
+            resultImage.src = 'img/лох.gif';
+            resultImage.style.display = 'block';
+            guessButton.disabled = true;
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+        }
+    }
+
+    guessInput.value = '';
+    guessInput.focus();
+});
     </script>
 </body>
 </html>
