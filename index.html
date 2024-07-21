@@ -52,12 +52,12 @@
         }
         .numberClass {
             /*Здесь поменяли позицию параграфа и цвет для наглядности*/
-            color: #C0C0C0;
+            color: white;
             position: relative;
             top: -300px;
             left: -20px;
             right: 250px;
-            font-size: 5px;
+            font-size: 3px;
             font-family: Arial;
         }
 
@@ -97,7 +97,7 @@
         const remainingAttempts = document.getElementById('remainingAttempts');
 
         let attempts = 3;
-        let randomNumber = Math.floor(Math.random() * 10) + 1;
+        let randomNumber = 10
         numberID.textContent = randomNumber; //Вот тут выводим значение переменной в созданный параграф
 
         guessButton.addEventListener('click', () => {
@@ -105,10 +105,9 @@
 
             if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
                 result.textContent = 'Пожалуйста, введите число от 1 до 10.';
-            } else {
-                attempts--;
-
-                if (userGuess === randomNumber) {
+            } 
+            else {
+                 if (userGuess === randomNumber) {
                     result.textContent = 'Поздравляю! Вы угадали число!';
                     resultImage.src = 'img/sigma.gif';
                     resultImage.style.display = 'block';
@@ -118,8 +117,10 @@
                     }, 3000);
                 } else if (userGuess < randomNumber) {
                     result.textContent = 'Попробуй число больше';
+                    attempts--;
                 } else if (userGuess > randomNumber) {
                     result.textContent = 'Попробуй число меньше';
+                    attempts--
                 }
 
                 remainingAttempts.textContent = attempts;
