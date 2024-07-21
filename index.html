@@ -97,7 +97,7 @@
         const remainingAttempts = document.getElementById('remainingAttempts');
 
         let attempts = 3;
-        let randomNumber = 10
+        let randomNumber = Math.floor(Math.random() * 10) + 1;
         numberID.textContent = randomNumber; //Вот тут выводим значение переменной в созданный параграф
 
         guessButton.addEventListener('click', () => {
