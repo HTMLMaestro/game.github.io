@@ -7,18 +7,18 @@
     <title>Игра "Угадай число"</title>
     <style>
         body {
-            background-image: url('img/фон.jpg');
-            background-size: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: white;
-        }
+    background-image: url('img/фон.jpg');
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
 
-        img {
-            opacity: 1000;
-        }
+img {
+    opacity: 1000; 
+}
 
         .container {
             text-align: center;
@@ -50,23 +50,12 @@
             cursor: pointer;
             font-family: Times;
         }
-        .numberClass {
-            /*Здесь поменяли позицию параграфа и цвет для наглядности*/
-            color: white;
-            position: relative;
-            top: -300px;
-            left: -20px;
-            right: 250px;
-            font-size: 3px;
-            font-family: Arial;
-        }
-
         p {
-            font-family: Times;
-            color: white;
-            text-shadow: black;
-            font-size: 20px;
-        }
+  font-family: Times;
+  color: white;
+  text-shadow: black;
+  font-size: 20px;
+}
         #resultImage {
             width: 350px;
             height: 350px;
@@ -75,65 +64,56 @@
 </head>
 <body>
     <div class="container">
-        <p>
-            Игра "Угадай число"
-        </p>
+        <p>Игра "Угадай число"</p>
         <input type="number" id="guessInput" min="1" max="10" placeholder="Введите число от 1 до 10">
         <button id="guessButton">Угадать</button>
         <p id="result"></p>
-        <p class="numberClass" id="numberID"></p>
-        <!--Вот тут создали параграф с текстом, где будет переменная-->
-        <p id="attempts">
-            Осталось попыток: <span id="remainingAttempts">3</span>
-        </p>
-        <img id="resultImage" src="#" alt="Результат" style="display:none;">
+        <p id="attempts">Осталось попыток: <span id="remainingAttempts">3</span></p>
+        <img id="resultImage" src="" alt="Результат" style="display:none;">
     </div>
 
     <script>
+    
+    
         const guessInput = document.getElementById('guessInput');
         const guessButton = document.getElementById('guessButton');
         const result = document.getElementById('result');
         const resultImage = document.getElementById('resultImage');
         const remainingAttempts = document.getElementById('remainingAttempts');
-
+        
         let attempts = 3;
         let randomNumber = Math.floor(Math.random() * 10) + 1;
-        numberID.textContent = randomNumber; //Вот тут выводим значение переменной в созданный параграф
 
         guessButton.addEventListener('click', () => {
             let userGuess = parseInt(guessInput.value);
 
             if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
                 result.textContent = 'Пожалуйста, введите число от 1 до 10.';
-            } 
-            else {
-                 if (userGuess === randomNumber) {
-                    result.textContent = 'Поздравляю! Вы угадали число!';
-                    resultImage.src = 'img/sigma.gif';
-                    resultImage.style.display = 'block';
-                    guessButton.disabled = true;
-                    setTimeout(() => {
-                        location.reload();
-                    }, 3000);
-                } else if (userGuess < randomNumber) {
-                    result.textContent = 'Попробуй число больше';
-                    attempts--;
-                } else if (userGuess > randomNumber) {
-                    result.textContent = 'Попробуй число меньше';
-                    attempts--
-                }
+            } else if (userGuess === randomNumber) {
+                result.textContent = 'Поздравляю! Вы угадали число!';
+                resultImage.src = 'img/sigma.gif';
+                resultImage.style.display = 'block';
+                guessButton.disabled = true;
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
+            } else if (userGuess < randomNumber) {
+                result.textContent = 'Попробуй число больше';
+            } else if (userGuess > randomNumber) {
+                result.textContent = 'Попробуй число меньше';
+            }
 
-                remainingAttempts.textContent = attempts;
+            attempts--;
+            remainingAttempts.textContent = attempts;
 
-                if (attempts === 0) {
-                    result.textContent = 'Вы проиграли!';
-                    resultImage.src = 'img/лох.gif';
-                    resultImage.style.display = 'block';
-                    guessButton.disabled = true;
-                    setTimeout(() => {
-                        location.reload();
-                    }, 3000);
-                }
+            if (attempts === 0) {
+                result.textContent = 'Вы проиграли!';
+                resultImage.src = 'img/лох.gif';
+                resultImage.style.display = 'block';
+                guessButton.disabled = true;
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
             }
 
             guessInput.value = '';
